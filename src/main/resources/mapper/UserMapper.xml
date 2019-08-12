@@ -14,4 +14,8 @@ mybatis会依据这个接口动态创建一个实现类去实现这个接口，
     <select id="findById" parameterType="int" resultType="Bean.User">
         select * from users where uid = #{id}
     </select>
+
+    <select id="findByUser" parameterType="Bean.User" resultType="String">
+        select uname from users where uid = #{uid}
+    </select>
 </mapper>

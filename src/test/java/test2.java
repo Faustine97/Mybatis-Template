@@ -6,9 +6,9 @@ import java.io.IOException;
 import java.io.Reader;
 import Bean.User;
 
-// 基本类型的输入
-// pojo的输出
-public class test {
+// pojo的输入
+// 基本类型的输出
+public class test2 {
     public static void main(String args[])
     {
 
@@ -26,10 +26,13 @@ public class test {
             SqlSessionFactory sqlMapper=new SqlSessionFactoryBuilder().build(reader);
             //创建session实例
             SqlSession session=sqlMapper.openSession();
+            // 创建一个User类型
+            User user = new User();
+            user.setUid(1);
             //传入参数查询，返回结果
-            User user=session.selectOne("findById",1);
+            String name = session.selectOne("findByUser",user);
             //输出结果
-            System.out.println(user.getUname());
+            System.out.println(name);
             //关闭session
             session.close();
         }catch (Exception e){
